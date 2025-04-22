@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { friends } from "@/data/friends";
+---
+
+<Layout title="友情链接">
+  <Header />
+  <main id="main-content" class="mx-auto max-w-3xl px-4 py-8">
+    <h1 class="text-3xl font-bold gradient-text">友情链接</h1>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        friends.map((friend) => (
+          <a
+            href={friend.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group card-hover block rounded-lg border border-border bg-background/80 backdrop-blur-sm p-4 transition-colors hover:border-accent"
+          >
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold group-hover:text-accent">
+                {friend.name}
+              </h2>
+            </div>
+            <p class="mt-2 text-sm text-foreground/90">{friend.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+  <Footer />
+</Layout> 

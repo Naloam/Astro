@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="white" />
+  <!-- 可爱的c -->
+  <path d="M30 50
+           Q30 30, 50 30
+           Q70 30, 70 50
+           Q70 70, 50 70
+           Q30 70, 30 50" 
+        fill="none" 
+        stroke="black" 
+        stroke-width="3"
+        stroke-linecap="round" />
+  <!-- 可爱的s -->
+  <path d="M40 50
+           Q50 45, 60 50
+           Q50 55, 40 60
+           Q50 65, 60 70" 
+        fill="none" 
+        stroke="black" 
+        stroke-width="3"
+        stroke-linecap="round" />
+  <!-- 可爱的y -->
+  <path d="M60 50
+           L70 40
+           M60 50
+           L70 60" 
+        fill="none" 
+        stroke="black" 
+        stroke-width="3"
+        stroke-linecap="round" />
+  <!-- 添加小圆点装饰 -->
+  <circle cx="35" cy="35" r="2" fill="black" />
+  <circle cx="65" cy="35" r="2" fill="black" />
+</svg>
