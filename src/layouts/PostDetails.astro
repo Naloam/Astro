@@ -9,6 +9,7 @@ import EditPost from "@/components/EditPost.astro";
 import BackButton from "@/components/BackButton.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
+import { calculateReadingTime } from "@/utils/readingTime";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
@@ -34,6 +35,7 @@ const {
 } = post.data;
 
 const { Content } = await render(post);
+const readingTime = calculateReadingTime(post.body ?? '');
 
 let ogImageUrl: string | undefined;
 
@@ -98,6 +100,7 @@ const nextPost =
     </h1>
     <div class="flex items-center gap-4">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" class="my-2" />
+      <span class="text-sm text-gray-500">阅读时间：{readingTime} 分钟</span>
       <EditPost class="max-sm:hidden" {hideEditPost} {post} />
     </div>
     <article id="article" class="mx-auto prose mt-8 max-w-3xl">
