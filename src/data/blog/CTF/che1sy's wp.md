@@ -1,3 +1,12 @@
+---
+
+title: "DUTCTF个人题解"
+description: "校赛CTF记录"
+pubDatetime: 2025-05-07
+tags: ["CTF", "wp"]
+
+---
+
 # che1sy's wp
 
 ## Web
