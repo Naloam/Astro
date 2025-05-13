@@ -46,7 +46,7 @@ app.get('/admin', (req, res) => {
 一旦我们把 ```config.adminSecret``` 改成自己知道的字符串，就可以直接 ```GET /admin?secret=你选的字符串``` 拿到 flag。
 
 POST传参：
-![传个json](Real_E2_J5_1.png)
+![传个json](/src/assets/images/blog/DUTCTF/Real_E2_J5_1.png)
 
 相应直接get请求即可得flag。
 
@@ -55,9 +55,9 @@ POST传参：
 ### 特定低手
 
 将图片放大，天桥上有模糊字样，经查询后可得知为：明治通路丰岛区目白2丁目，在Google街景查询，经搜查和确认得到结果如图。
-![谷歌街景](特定低手_1.png)
+![谷歌街景](/src/assets/images/blog/DUTCTF/特定低手_1.png)
 由图片内容或查询得知邮政编码为1710032，按题目要求编码即得flag。
-![md5](特定低手_2.png)
+![md5](/src/assets/images/blog/DUTCTF/特定低手_2.png)
 
 ### Signin
 
@@ -68,10 +68,10 @@ W栅栏密码，5层，放到在线网站一试就出来了。
 > 拿到题目想了好久，在文件夹里找但是没有头绪，最后还是问AI才有了思路。
 
 先运行`find / -perm -4000 -type f 2>/dev/null`，找有SUID权限的文件，看是否要提权。发现有提权入口，随后依次执行`ls -l /tmp/whatisthis`、`file /tmp/whatisthis`、`/tmp/whatisthis`，观察输出结果
-![](Terminal_1.png)
+![](/src/assets/images/blog/DUTCTF/Terminal_1.png)
 执行`id whoami`，发现自己仍然是test用户。
 执行`strings /tmp/whatisthis`，查看是否调用了某些命令，是否可以命令注入。
-![](Terminal_2.png)
+![](/src/assets/images/blog/DUTCTF/Terminal_2.png)
 发现这个 `/tmp/whatisthis` 是一个 **SUID + root 权限的 ELF 可执行文件**，并且：
 
 + 执行它时会启动 sh（即 shell）；
@@ -108,7 +108,7 @@ base64 /root/flag > /home/test/flag.b64
 cat /home/test/flag.b64
 ```
 复制 Base64 编码，到本地解压即可。
-![](Terminal_3.png)
+![](/src/assets/images/blog/DUTCTF/Terminal_3.png)
 
 ## Crypto
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
 ```
 
 运行脚本：
-![](stream&block_1.png)
+![](/src/assets/images/blog/DUTCTF/stream&block_1.png)
 
 ### Signin
 
@@ -248,26 +248,7 @@ $$
 
 $$
 p = \gcd(N, a \cdot c + e \cdot b \cdot d), \quad q = \frac{N}{p}
-$$
-
----
-
-构造私钥：
-
-$$
-\varphi(N) = (p - 1)(q - 1), \quad d_{\text{priv}} = e^{-1} \mod \varphi(N)
-$$
-
----
-
-解密：
-
-$$
-m = (\text{enc\_flag})^{d_{\text{priv}}} \mod N
-$$
-
-将所得大整数转换回字节，再解码为 ASCII。
-按步骤计算可得：DUTCTF{51ca1a47-b421-4723-b779-0e8521f455ae}
+```
 
 ### Xxxxxxxor
 
