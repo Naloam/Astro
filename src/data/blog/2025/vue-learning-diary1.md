@@ -2,12 +2,19 @@
 
 title: "Vue学习日记1"
 description: "学习Vue的笔记"
-pubDatetime: 2025-04-19
-tags: ["Vue", "前端", "笔记"]
+pubDatetime: 2025-04-19T14:45:45Z
+tags: 
+    - Vue
+    - 前端
+    - 笔记
+author: "che1sy"
+slug: vue-learning-diary1
+featured: false
+draft: false
 
 ---
 
-## 
+## Vue 学习日记1
 
 ### 1. 什么是 Vue.js？
 - 一个用于构建用户界面的渐进式框架

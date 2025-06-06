@@ -2,8 +2,14 @@
 
 title: "DUTCTF个人题解"
 description: "校赛CTF记录"
-pubDatetime: 2025-05-07
-tags: ["CTF", "wp"]
+pubDatetime: 2025-05-07T23:20:06Z
+tags: 
+    - CTF
+    - wp
+author: "che1sy"
+slug: DUTCTF-wp
+featured: true
+draft: false
 
 ---
 
@@ -234,6 +240,7 @@ N = a² + e·b²  = c² + e·d²
 g = gcd(N, S)
 ```
 就是 N 的一个非平凡因子。具体步骤如下：
+
 计算
 
 $$
@@ -248,7 +255,26 @@ $$
 
 $$
 p = \gcd(N, a \cdot c + e \cdot b \cdot d), \quad q = \frac{N}{p}
-```
+$$
+
+---
+
+构造私钥：
+
+$$
+\varphi(N) = (p-1)(q-1), \quad d_{priv} = e^{-1} \bmod \varphi(N)
+$$
+
+---
+
+解密：
+
+$$
+m = (\text{enc\_flag})^{d_{priv}} \bmod N
+$$
+
+将所得大整数转换回字节，再解码为 ASCII。  
+按步骤计算即可：DUTCTF{51ca1a47-b421-4723-b779-0e8521f455ae}
 
 ### Xxxxxxxor
 
