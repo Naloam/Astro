@@ -14,7 +14,7 @@ export const SITE = {
   editPost: {
     enabled: true,
     text: "编辑此页面",
-    url: "https://github.com/che1sy/che1sy.dev/edit/main/",
+    url: "https://github.com/Naloam/Astro/blob/main/",
   },
   dynamicOgImage: true,
   lang: "zh", // html lang code. Set this empty and default will be "en"

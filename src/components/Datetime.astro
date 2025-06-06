@@ -40,19 +40,24 @@ const time = datetime.format("hh:mm A"); // e.g., '08:30 PM'
       { "scale-90": size === "sm" },
     ]}
   />
-  {
-    modDatetime && modDatetime > pubDatetime ? (
-      <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>
-        Updated:
-      </span>
-    ) : (
-      <span class="sr-only">Published:</span>
-    )
-  }
+  {/* 发布时间 */}
+  <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>Published:</span>
   <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>
-    <time datetime={datetime.toISOString()}>{date}</time>
+    <time datetime={dayjs(pubDatetime).tz(postTimezone || SITE.timezone).toISOString()}>{dayjs(pubDatetime).tz(postTimezone || SITE.timezone).format("D MMM, YYYY")}</time>
     <span aria-hidden="true"> | </span>
     <span class="sr-only">&nbsp;at&nbsp;</span>
-    <span class="text-nowrap">{time}</span>
+    <span class="text-nowrap">{dayjs(pubDatetime).tz(postTimezone || SITE.timezone).format("hh:mm A")}</span>
   </span>
+  {/* 如果有更新时间且比发布时间新，显示更新时间 */}
+  {modDatetime && modDatetime > pubDatetime && (
+    <>
+      <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>Updated:</span>
+      <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>
+        <time datetime={dayjs(modDatetime).tz(postTimezone || SITE.timezone).toISOString()}>{dayjs(modDatetime).tz(postTimezone || SITE.timezone).format("D MMM, YYYY")}</time>
+        <span aria-hidden="true"> | </span>
+        <span class="sr-only">&nbsp;at&nbsp;</span>
+        <span class="text-nowrap">{dayjs(modDatetime).tz(postTimezone || SITE.timezone).format("hh:mm A")}</span>
+      </span>
+    </>
+  )}
 </div>
